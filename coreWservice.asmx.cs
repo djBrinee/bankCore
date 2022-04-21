@@ -123,6 +123,47 @@ namespace bankCore
             }
         }
 
+        [WebMethod]
+        public string BuscarClientePorID(string json)
+        {
+            adapterCliente adapterCliente = new adapterCliente();
+            BuscarClienteIDResp respuesta = null;
+            string jsonResp = null;
+            try
+            {
+                BuscarClientePorID clienteSolicitado = JsonConvert.DeserializeObject<BuscarClientePorID>(json);
+                DataTable dt = adapterCliente.ppBuscarClienteCreadoID(clienteSolicitado.ID);
+                respuesta = new BuscarClienteIDResp()
+                {
+                    Id = long.Parse(dt.Rows[0].ToString()),
+                    Usuario =
+                    {
+                        Id = long.Parse(dt.Rows[1].ToString()),
+                        Username = dt.Rows[2].ToString(),
+                        Password = dt.Rows[3].ToString(),
+                        LastLoginTime = DateTime.Parse(dt.Rows[4].ToString())
+                    },
+                    Name = dt.Rows[5].ToString(),
+                    Cedula = dt.Rows[6].ToString(),
+                    sex = bool.Parse(dt.Rows[7].ToString()),
+                    FechaRegistro = DateTime.Parse(dt.Rows[8].ToString()),
+                    estado = bool.Parse(dt.Rows[9].ToString())
+                };
+                jsonResp = JsonConvert.SerializeObject(respuesta, Formatting.Indented);
+                return jsonResp;
+
+            }
+            catch (Exception)
+            {
+                jsonResp = JsonConvert.SerializeObject(respuesta, Formatting.Indented);
+                return jsonResp;
+            }
+
+        }
+
+
+
+
 
     }
 }

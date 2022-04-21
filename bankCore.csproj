@@ -120,10 +120,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Answers\BuscarClienteIDResp.cs" />
     <Compile Include="Models\Answers\InsertarClienteResp.cs" />
     <Compile Include="Models\Answers\InsertarPrestamoResp.cs" />
     <Compile Include="Models\Answers\InsertarTransaccionResp.cs" />
     <Compile Include="Models\Answers\User.cs" />
+    <Compile Include="Models\Calls\BuscarClientePorID.cs" />
     <Compile Include="Models\Calls\InsertarCliente.cs" />
     <Compile Include="Models\Calls\InsertarPrestamo.cs" />
     <Compile Include="Models\Calls\InsertarTransaccion.cs" />
